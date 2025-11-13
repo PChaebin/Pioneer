@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -363,7 +362,7 @@ public class GameManager : MonoBehaviour, IBegin
             Debug.Log($"[Mariner] Day {currentDay} 아침: 승선 0명 → 총 {totalMarinerMembers}명");
             return;
         }
-
+            
         SpawnMariner(add);
         Debug.Log($"[Mariner] Day {currentDay} 아침: 승선 {add}명 → 총 {totalMarinerMembers}명");
     }
@@ -376,11 +375,10 @@ public class GameManager : MonoBehaviour, IBegin
         {
             case 1: return 0;
             case 2: return 1;
-            case 3: return 2;
-            case 4: return 3;
+            case 3: return 1;
+            case 4: return 1;
             case 5: return (marinerNow <= 3) ? 4 : 5;
             default:
-                // 6일차 이상은 마지막 값을 유지하거나, 필요 시 규칙 확장
                 return (marinerNow <= 3) ? 4 : 5;
         }
     }
@@ -508,7 +506,11 @@ public class GameManager : MonoBehaviour, IBegin
 
         // 스폰 기준 위치 = mast
         Vector3 basePos = Vector3.zero;
-        if (mast != null) basePos = mast.position;
+        if (mast != null)
+        {
+            UnityEngine.Debug.Log(mast.position);
+            basePos = mast.position;
+        }
         else if (ThisIsPlayer.Player != null) basePos = ThisIsPlayer.Player.transform.position; 
 
         for (int i = 0; i < count; i++)

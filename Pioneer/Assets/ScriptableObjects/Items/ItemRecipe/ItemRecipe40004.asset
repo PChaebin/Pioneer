@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result:
     id: 40004
-    amount: 1
+    amount: 2
     duability: 0
     isUseCoroutineEnd: 0
   resultBuildingOrNull: {fileID: 0}
